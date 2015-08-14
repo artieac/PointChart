@@ -7,6 +7,7 @@ using System.Web.Http;
 using AlwaysMoveForward.PointChart.Common.DomainModel;
 using AlwaysMoveForward.PointChart.Web.Code.Filters;
 using AlwaysMoveForward.PointChart.Web.Models.API;
+
 namespace AlwaysMoveForward.PointChart.Web.Controllers.API
 {
     public class CompleteTaskController : BaseAPIController
