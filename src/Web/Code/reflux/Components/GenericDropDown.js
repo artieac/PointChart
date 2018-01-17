@@ -1,7 +1,8 @@
 ﻿'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 
-var GenericDropDown = React.createClass({
+var GenericDropDown = createReactClass({
 	getInitialState: function() {
 		return {
 			listVisible: false

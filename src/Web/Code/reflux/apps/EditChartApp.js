@@ -1,7 +1,8 @@
 ﻿'use strict'
-/** @jsx React.DOM */
 var React = require('react');
 var Reflux = require('reflux');
+var ReactDOM = require('react-dom');
+var createReactClass = require('create-react-class');
 var chartStore = require('../stores/chartStore');
 var chartActions = require('../actions/chartActions');
 var taskStore = require('../stores/taskStore');
@@ -10,7 +11,7 @@ var pointEarnerStore = require('../stores/pointEarnerStore');
 var pointEarnerActions = require('../actions/pointEarnerActions');
 var TaskSelectionTable = require('../Components/ChartComponents/TaskSelectionTable');
 
-var EditChartApp = React.createClass({
+var EditChartApp = createReactClass({
     mixins: [
         Reflux.connect(chartStore, "currentChart"),
         Reflux.connect(taskStore, "allTasks"),
@@ -62,5 +63,5 @@ var EditChartApp = React.createClass({
 });
 
 module.exports = EditChartApp;
-React.render(<EditChartApp chartId={chartIdentifer}/>, document.getElementById("editChartPageReactContent"));
+ReactDOM.render(<EditChartApp chartId={chartIdentifer}/>, document.getElementById("editChartPageReactContent"));
 

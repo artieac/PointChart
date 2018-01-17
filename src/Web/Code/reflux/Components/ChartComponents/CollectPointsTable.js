@@ -3,10 +3,11 @@ var jQuery = require('jquery');
 var React = require('react');
 var Reflux = require('reflux');
 var moment = require('moment');
+var createReactClass = require('create-react-class');
 var completedTaskActions = require('../../actions/completedTaskActions');
 var completedTaskStore = require('../../stores/completedTaskStore');
 
-var CollectPointsRow = React.createClass({
+var CollectPointsRow = createReactClass({
     addCompletedTask: function(chartId, taskId, inputValueControl, completionDate){
         if(inputValueControl != null){
             completedTaskActions.addCompletedTask(chartId,
@@ -156,7 +157,7 @@ var CollectPointsRow = React.createClass({
     }    
 });
 
-var CollectPointsTableBody = React.createClass({  
+var CollectPointsTableBody = createReactClass({  
     getCompletedTasks: function(currentRow){
         var retVal = null;
 
@@ -183,7 +184,7 @@ var CollectPointsTableBody = React.createClass({
     }    
 });
 
-var CollectPointsTable = React.createClass({
+var CollectPointsTable = createReactClass({
     mixins: [
         Reflux.connect(completedTaskStore, "allTasks")
     ],

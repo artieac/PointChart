@@ -15,13 +15,13 @@ namespace AlwaysMoveForward.PointChart.UnitTests.Constants
         public class ChartCreator
         {
             public const long Id = 1;
-            public const long OAuthServiceId = 6;   
+            public const string OAuthServiceId = "6";   
         }
 
         public class PointEarner
         {
             public const long Id = 2;
-            public const long OAuthServiceId = 1;
+            public const string OAuthServiceId = "1";
         }
     }
 }

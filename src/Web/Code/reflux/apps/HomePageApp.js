@@ -1,14 +1,15 @@
 ﻿'use strict'
-/** @jsx React.DOM */
 var jQuery = require('jquery');
 var React = require('react');
+var ReactDOM = require('react-dom');
 var Reflux = require('reflux');
 var Route = require('react-router');
+var createReactClass = require('create-react-class');
 var chartCollectionStore = require('../stores/chartCollectionStore');
 var chartCollectionActions = require('../actions/chartCollectionActions');
 var ChartSummaryTable = require('../Components/ChartComponents/ChartSummaryTable');
 
-var HomePageApp = React.createClass({
+var HomePageApp = createReactClass({
     mixins: [
         Reflux.connect(chartCollectionStore, "chartCreatedCollection"),
         Reflux.connect(chartCollectionStore, "chartEarnerCollection"),
@@ -53,7 +54,7 @@ var HomePageApp = React.createClass({
     }
 });
 
-React.render(<HomePageApp />, document.getElementById("homePageReactContent"));
+ReactDOM.render(<HomePageApp />, document.getElementById("homePageReactContent"));
 
 module.exports = HomePageApp;
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AlwaysMoveForward.PointChart.Common.DomainModel
 {
-    public interface IPointChartUser : AlwaysMoveForward.Common.DomainModel.IRemoteOAuthUser
+    public interface IPointChartUser
     {
         bool IsSiteAdministrator { get; set; }
 

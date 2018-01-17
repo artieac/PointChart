@@ -17,7 +17,7 @@ namespace AlwaysMoveForward.PointChart.Common.DomainModel
 
         public PointChartUser(User amfUser) : this()
         {
-            this.OAuthServiceUserId = amfUser.Id;
+            this.OAuthServiceUserId = amfUser.Id.ToString();
             this.FirstName = amfUser.FirstName;
             this.LastName = amfUser.LastName;
         }
@@ -25,11 +25,11 @@ namespace AlwaysMoveForward.PointChart.Common.DomainModel
         #region IRemoteOAuthUser 
 
         public long Id { get; set; }
-        public long OAuthServiceUserId { get; set; }
+        public string OAuthServiceUserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        string IRemoteOAuthUser.AccessToken { get; set; }
-        string IRemoteOAuthUser.AccessTokenSecret { get; set; }
+        public string AccessToken { get; set; }
+        public string AccessTokenSecret { get; set; }
 
         #endregion
 

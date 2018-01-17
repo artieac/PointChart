@@ -1,12 +1,12 @@
 ﻿'use strict'
-/** @jsx React.DOM */
 var React = require('react');
 var Reflux = require('reflux');
-var Route = require('react-router');
+var Route = require('react-router')
+var createReactClass = require('create-react-class');
 var pointsSpentActions = require('../../actions/pointsSpentActions');
 var pointsSpentStore = require('../../stores/pointsSpentStore');
 
-var PointsDetail = React.createClass({
+var PointsDetail = createReactClass({
     mixins: [
         Reflux.connect(pointsSpentStore, "pointsDetail")
     ],

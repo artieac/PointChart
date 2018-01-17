@@ -51,7 +51,7 @@ namespace AlwaysMoveForward.PointChart.BusinessLayer.Services
             }
 
             IPointChartRepositoryManager repositoryManager = this.CreateRepositoryManager(unitOfWork);
-            return new ServiceManager(unitOfWork, repositoryManager, this.CreateOAuthClient());
+            return new ServiceManager(unitOfWork, repositoryManager);
         }
 
         protected virtual UnitOfWork CreateUnitOfWork(string connectionString)
@@ -62,13 +62,6 @@ namespace AlwaysMoveForward.PointChart.BusinessLayer.Services
         protected virtual IPointChartRepositoryManager CreateRepositoryManager(IUnitOfWork unitOfWork)
         {
             return new RepositoryManager(unitOfWork as UnitOfWork);
-        }
-
-        protected virtual OAuthClientBase CreateOAuthClient()
-        {
-            OAuthKeyConfiguration keyConfiguration = OAuthKeyConfiguration.GetInstance();
-            EndpointConfiguration oauthEndpoints = EndpointConfiguration.GetInstance();
-            return new AlwaysMoveForward.OAuth.Client.RestSharp.OAuthClient(oauthEndpoints.ServiceUri, keyConfiguration.ConsumerKey, keyConfiguration.ConsumerSecret, oauthEndpoints);
         }
     }
 }

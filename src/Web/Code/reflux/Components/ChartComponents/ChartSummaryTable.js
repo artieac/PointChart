@@ -1,8 +1,9 @@
 ﻿'use strict'
 /// <reference path="../ChartSummaryTable/ChartSummaryRow.js" />
 var React = require('react');
+var createReactClass = require('create-react-class');
 
-var ChartSummaryRow = React.createClass({
+var ChartSummaryRow = createReactClass({
     handleEditClick: function() {
         window.location.href="/Chart/" + this.props.rowData.Id;
     },
@@ -27,7 +28,7 @@ var ChartSummaryRow = React.createClass({
 }
 });
 
-var ChartSummaryTableBody = React.createClass({
+var ChartSummaryTableBody = createReactClass({
     render: function () {
         if(typeof this.props.tableBodyData !== 'undefined' && this.props.tableBodyData.constructor === Array){
             return (
@@ -44,7 +45,7 @@ var ChartSummaryTableBody = React.createClass({
     }
 });
 
-var NewChartButton = React.createClass({
+var NewChartButton = createReactClass({
     onAddTask: function(){
         location.href="/chart/-1";
     },
@@ -63,7 +64,7 @@ var NewChartButton = React.createClass({
     }    
 });
 
-var ChartSummaryTable = React.createClass({
+var ChartSummaryTable = createReactClass({
     handlNewChartClick: function(){
         location.href="/chart/-1";
     },
@@ -76,12 +77,14 @@ var ChartSummaryTable = React.createClass({
                         
                     </div>
                     <table className="table table-striped table-bordered">
-                        <thead> 
-                            <th>Name</th>
-                            <th>Task Count</th>
-                            <th>Point Earner</th>
-                            <th>Points Earned</th>
-                            <th><NewChartButton showNew={this.props.showNew}/></th>
+						<thead> 
+							<tr>
+								<th>Name</th>
+								<th>Task Count</th>
+								<th>Point Earner</th>
+								<th>Points Earned</th>
+								<th><NewChartButton showNew={this.props.showNew} /></th>
+							</tr>
                         </thead>                    
                         <ChartSummaryTableBody tableBodyData={this.props.tableData}/>
                     </table>

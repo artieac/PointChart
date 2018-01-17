@@ -1,10 +1,11 @@
 ﻿'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 
 // Actions
 var taskActions = require("../../actions/taskActions");
 
-var TaskRow = React.createClass({
+var TaskRow = createReactClass({
     getInitialState: function() {
         return { showEditable: false };
     },

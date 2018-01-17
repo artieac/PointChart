@@ -1,10 +1,11 @@
 ﻿'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 
 // Actions
 var taskActions = require("../../actions/taskActions");
 
-var TaskInputRow = React.createClass({
+var TaskInputRow = createReactClass({
     onAddTask: function() {
         taskActions.createTask(
             React.findDOMNode(this.refs.name).value, 

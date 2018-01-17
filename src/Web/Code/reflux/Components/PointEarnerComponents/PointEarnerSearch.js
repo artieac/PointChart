@@ -1,12 +1,12 @@
 ﻿'use strict'
-/** @jsx React.DOM */
 var React = require('react');
 var Reflux = require('reflux');
 var Route = require('react-router');
+var createReactClass = require('create-react-class');
 var pointEarnerStore = require('../../stores/pointEarnerStore');
 var pointEarnerActions = require('../../actions/pointEarnerActions');
 
-var PointEarnerSearchRow = React.createClass({    
+var PointEarnerSearchRow = createReactClass({    
     handleCheckboxSelection: function(){
         this.props.handlePointEarnerSelection(this.props.rowData);
     },
@@ -24,7 +24,7 @@ var PointEarnerSearchRow = React.createClass({
     }    
 });
 
-var PointEarnerSearchTableBody = React.createClass({      
+var PointEarnerSearchTableBody = createReactClass({      
     render: function () {
         if(typeof this.props.tableBodyData !== 'undefined' && this.props.tableBodyData.constructor === Array){
             return (
@@ -41,7 +41,7 @@ var PointEarnerSearchTableBody = React.createClass({
     }
 });
 
-var PointEarnerSearch = React.createClass({
+var PointEarnerSearch = createReactClass({
     mixins: [
         Reflux.connect(pointEarnerStore, "foundPointEarners")
     ],

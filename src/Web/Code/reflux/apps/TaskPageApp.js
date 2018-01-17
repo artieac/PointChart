@@ -1,14 +1,15 @@
 ﻿'use strict'
-/** @jsx React.DOM */
 var jQuery = require('jquery');
 var React = require('react');
+var ReactDOM = require('react-dom');
 var Reflux = require('reflux');
 var Route = require('react-router');
+var createReactClass = require('create-react-class');
 var taskStore = require('../stores/taskStore');
 var taskActions = require('../actions/taskActions');
 var TaskTable = require('../Components/TaskComponents/TaskTable.js');
 
-var TaskPageApp = React.createClass({
+var TaskPageApp = createReactClass({
     mixins: [
         Reflux.connect(taskStore, "allTasks"),
     ],
@@ -42,5 +43,5 @@ var TaskPageApp = React.createClass({
 
 module.exports = TaskPageApp;
 
-React.render(<TaskPageApp />, document.getElementById("taskPageReactContent"));
+ReactDOM.render(<TaskPageApp />, document.getElementById("taskPageReactContent"));
 

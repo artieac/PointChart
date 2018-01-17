@@ -39,6 +39,7 @@
       <HintPath>..\..\Lib\AlwaysMoveForward.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auth0Configuration.cs" />
     <Compile Include="DomainModel\Chart.cs" />
     <Compile Include="DomainModel\CompletedTask.cs" />
     <Compile Include="DomainModel\IPointChartUser.cs" />

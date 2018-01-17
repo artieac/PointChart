@@ -1,7 +1,9 @@
 ﻿'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 
-var PointEarnerRow = React.createClass({    
+
+var PointEarnerRow = createReactClass({    
     handleRemoveClick: function(){
         this.props.handleRemovePointEarner(this.props.rowData.PointEarner);
     },
@@ -21,7 +23,7 @@ var PointEarnerRow = React.createClass({
     }    
 });
 
-var PointEarnerTableBody = React.createClass({      
+var PointEarnerTableBody = createReactClass({      
     render: function () {
         if(typeof this.props.tableBodyData !== 'undefined' && this.props.tableBodyData.constructor === Array){
             return (
@@ -40,7 +42,7 @@ var PointEarnerTableBody = React.createClass({
     }
 });
 
-var PointEarnerTable = React.createClass({   
+var PointEarnerTable = createReactClass({   
     render: function() {
         return (
             <div>

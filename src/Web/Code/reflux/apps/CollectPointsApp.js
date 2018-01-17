@@ -1,14 +1,16 @@
-﻿/** @jsx React.DOM */
-var React = require('react');
+﻿var React = require('react');
+var ReactDOM = require('react-dom');
 var Reflux = require('reflux');
 var moment = require('moment');
+var createReactClass = require('create-react-class');
+
 var chartStore = require('../stores/chartStore');
 var chartActions = require('../actions/chartActions');
 var CollectPointsTable = require('../Components/ChartComponents/CollectPointsTable');
 var CalendarControl = require('../Components/CalendarControl');
 var PointsDetail = require('../Components/PointEarnerComponents/PointsDetail');
 
-var CollectPointsApp = React.createClass({
+var CollectPointsApp = createReactClass({
     mixins: [
         Reflux.connect(chartStore, "currentChart")
     ],
@@ -91,5 +93,5 @@ var CollectPointsApp = React.createClass({
 });
 
 module.exports = CollectPointsApp;
-React.render(<CollectPointsApp chartId={chartIdentifer} selectedDate={targetDate} pointEarnerId={pointEarnerId}/>, document.getElementById("collectPointsReactContent"));
+ReactDOM.render(<CollectPointsApp chartId={chartIdentifer} selectedDate={targetDate} pointEarnerId={pointEarnerId}/>, document.getElementById("collectPointsReactContent"));
 

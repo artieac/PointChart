@@ -1,10 +1,11 @@
 ﻿'use strict'
 var React = require('react');
 var Reflux = require('reflux');
+var createReactClass = require('create-react-class');
 var pointsSpentStore = require('../../stores/pointsSpentStore');
 var pointsSpentActions = require('../../actions/pointsSpentActions');
 
-var SpentPointsInputRow = React.createClass({
+var SpentPointsInputRow = createReactClass({
     onSpendPoints: function() {
         pointsSpentActions.spendPoints(
             this.props.pointEarnerId,
@@ -27,7 +28,7 @@ var SpentPointsInputRow = React.createClass({
     }  
 });
 
-var PointsSpentRow = React.createClass({    
+var PointsSpentRow = createReactClass({    
     handleRemoveClick: function(){
         this.props.handleRemoveSpentPoints(this.props.rowData.PointEarner);
     },
@@ -46,7 +47,7 @@ var PointsSpentRow = React.createClass({
 }    
 });
 
-var PointsSpentTableBody = React.createClass({      
+var PointsSpentTableBody = createReactClass({      
     render: function () {
         if(typeof this.props.tableBodyData !== 'undefined' && this.props.tableBodyData.constructor === Array){
             return (
@@ -68,7 +69,7 @@ var PointsSpentTableBody = React.createClass({
     }
 });
 
-var PointsSpentTable = React.createClass({   
+var PointsSpentTable = createReactClass({   
     mixins: [
         Reflux.connect(pointsSpentStore, "spentPoints"),
     ],

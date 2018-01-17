@@ -1,8 +1,9 @@
 ﻿'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 var Moment = require('moment');
 
-var WeekDates = React.createClass({
+var WeekDates = createReactClass({
     generateUrl: function(dayItem){
         return "/Home/CollectPoints/" + this.props.chartId
             + "/" + dayItem.date.year()
@@ -53,7 +54,7 @@ var WeekDates = React.createClass({
     }
 });
 
-var CalendarControl = React.createClass({
+var CalendarControl = createReactClass({
     getInitialState: function() {
         return {
             month: this.props.selected.clone()

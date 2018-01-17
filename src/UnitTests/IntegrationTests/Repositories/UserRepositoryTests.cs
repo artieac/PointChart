@@ -12,7 +12,7 @@ namespace AlwaysMoveForward.PointChart.UnitTests.IntegrationTests.Repositories
     [TestFixture]
     public class UserRepositoryTests : RepositoryTestBase
     {
-        private PointChartUser CreatePointChartUser(long oauthServiceId)
+        private PointChartUser CreatePointChartUser(string oauthServiceId)
         {
             PointChartUser retVal = new PointChartUser();
             retVal.OAuthServiceUserId = oauthServiceId;

@@ -23,8 +23,8 @@ namespace AlwaysMoveForward.PointChart.DataLayer.DataMapper
             {
                 var newMap = Mapper.CreateMap<PointChartUser, DTO.User>()
                     .ForMember(dest => dest.PointEarners, src => src.ResolveUsing<UserDTOListResolver>())
-                    .ForMember(dest => dest.AccessToken, opt => opt.MapFrom(src => ((IRemoteOAuthUser)src).AccessToken))
-                    .ForMember(dest => dest.AccessTokenSecret, opt => opt.MapFrom(src => ((IRemoteOAuthUser)src).AccessTokenSecret));
+                    .ForMember(dest => dest.AccessToken, opt => opt.MapFrom(src => src.AccessToken))
+                    .ForMember(dest => dest.AccessTokenSecret, opt => opt.MapFrom(src => src.AccessTokenSecret));
                 newMap.MaxDepth(2);
             }
 
@@ -32,8 +32,8 @@ namespace AlwaysMoveForward.PointChart.DataLayer.DataMapper
             if (existingMap == null)
             {
                 var newMap = Mapper.CreateMap<DTO.User, PointChartUser>()
-                    .ForMember(dest => ((IRemoteOAuthUser)dest).AccessToken, opt => opt.MapFrom(src => src.AccessToken))
-                    .ForMember(dest => ((IRemoteOAuthUser)dest).AccessTokenSecret, opt => opt.MapFrom(src =>src.AccessTokenSecret));
+                    .ForMember(dest => dest.AccessToken, opt => opt.MapFrom(src => src.AccessToken))
+                    .ForMember(dest => dest.AccessTokenSecret, opt => opt.MapFrom(src =>src.AccessTokenSecret));
                 newMap.MaxDepth(2);
             }
 #if DEBUG

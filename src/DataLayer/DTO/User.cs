@@ -33,7 +33,7 @@ namespace AlwaysMoveForward.PointChart.DataLayer.DTO
         public virtual bool IsSiteAdministrator { get; set; }
 
         [NHibernate.Mapping.Attributes.Property]
-        public virtual long OAuthServiceUserId { get; set; }
+        public virtual string OAuthServiceUserId { get; set; }
 
         [NHibernate.Mapping.Attributes.Property]
         public virtual string FirstName { get; set; }

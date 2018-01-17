@@ -16,7 +16,7 @@ namespace AlwaysMoveForward.PointChart.DataLayer.Repositories
         /// </summary>
         /// <param name="userName"></param>
         /// <returns></returns>
-        PointChartUser GetByOAuthServiceUserId(long userId);
+        PointChartUser GetByOAuthServiceUserId(string userId);
      
     }
 }

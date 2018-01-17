@@ -1,10 +1,11 @@
 ﻿'use strict'
-/** @jsx React.DOM */
 var React = require('react');
+var ReactDOM = require('react-dom');
 var Reflux = require('reflux');
+var createReactClass = require('create-react-class');
 var PointsSpentTable = require('../Components/PointEarnerComponents/PointsSpentTable');
 
-var SpendPointsApp = React.createClass({
+var SpendPointsApp = createReactClass({
     mixins: [
     ],
 
@@ -31,5 +32,5 @@ var SpendPointsApp = React.createClass({
 });
 
 module.exports = SpendPointsApp;
-React.render(<SpendPointsApp pointEarnerId={pointEarnerId}/>, document.getElementById("spendPointsReactContent"));
+ReactDOM.render(<SpendPointsApp pointEarnerId={pointEarnerId}/>, document.getElementById("spendPointsReactContent"));
 

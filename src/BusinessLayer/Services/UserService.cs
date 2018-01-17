@@ -32,19 +32,16 @@ namespace AlwaysMoveForward.PointChart.BusinessLayer.Services
         private const string GuestUserName = "guest";
         private static PointChartUser guestUser = null;
 
-        public UserService(IUnitOfWork unitOfWork, IUserRepository userRepository, IOAuthRepository oauthRepository)
+        public UserService(IUnitOfWork unitOfWork, IUserRepository userRepository)
             : base()
         {
             this.UnitOfWork = unitOfWork;
             this.UserRepository = userRepository;
-            this.OAuthRepository = oauthRepository;
         }
 
         protected IUnitOfWork UnitOfWork { get; private set; }
 
         protected IUserRepository UserRepository { get; private set; }
-
-        protected IOAuthRepository OAuthRepository { get; private set; }
 
         public PointChartUser Save(long userId, bool isSiteAdmin, bool isApprovedCommenter, string userAbout)
         {
@@ -117,7 +114,7 @@ namespace AlwaysMoveForward.PointChart.BusinessLayer.Services
 
             if (amfUser != null)
             {
-                retVal = this.UserRepository.GetByOAuthServiceUserId(amfUser.Id);
+                retVal = this.UserRepository.GetByOAuthServiceUserId(amfUser.Id.ToString());
 
                 if (retVal == null)
                 {
@@ -132,9 +129,31 @@ namespace AlwaysMoveForward.PointChart.BusinessLayer.Services
             return retVal;
         }
 
+        public PointChartUser GetFromAMFUser(string oauthUserId, String firstName, String lastName, String accessToken)
+        {
+            PointChartUser retVal = null;
+
+            retVal = this.UserRepository.GetByOAuthServiceUserId(oauthUserId);
+
+            if (retVal == null)
+            {
+                retVal = new PointChartUser();
+                retVal.OAuthServiceUserId = oauthUserId;
+                retVal.FirstName = firstName;
+                retVal.LastName = lastName;
+            }
+
+            retVal.AccessToken = accessToken;
+            retVal.AccessTokenSecret = accessToken;
+            retVal = this.UserRepository.Save(retVal);
+
+            return retVal;
+        }
+
         public User GetAMFUserInfo(IOAuthToken oauthToken)
         {
-            return this.OAuthRepository.GetUserInfo(oauthToken);
+            return null;
+//            return this.OAuthRepository.GetUserInfo(oauthToken);
         }
 
         public PointChartUser FindByEmail(string emailAddress, IOAuthToken oauthToken)
@@ -143,11 +162,11 @@ namespace AlwaysMoveForward.PointChart.BusinessLayer.Services
 
             if(!string.IsNullOrEmpty(emailAddress))
             {
-                IList<User> foundUsers = this.OAuthRepository.GetByEmail(oauthToken, emailAddress);
+                IList<User> foundUsers = new List<User>(); // this.OAuthRepository.GetByEmail(oauthToken, emailAddress);
 
                 if(foundUsers != null && foundUsers.Count == 1)
                 {
-                    retVal = this.UserRepository.GetByOAuthServiceUserId(foundUsers[0].Id);
+                    retVal = this.UserRepository.GetByOAuthServiceUserId(foundUsers[0].Id.ToString());
 
                     if(retVal == null)
                     {
@@ -165,7 +184,7 @@ namespace AlwaysMoveForward.PointChart.BusinessLayer.Services
 
             if (!string.IsNullOrEmpty(emailAddress))
             {
-                IList<User> foundUsers = this.OAuthRepository.GetByEmail(oauthToken, emailAddress);
+                IList<User> foundUsers = new List<User>(); // this.OAuthRepository.GetByEmail(oauthToken, emailAddress);
 
                 for(int i = 0; i < foundUsers.Count; i++)
                 {
@@ -176,13 +195,13 @@ namespace AlwaysMoveForward.PointChart.BusinessLayer.Services
             return retVal;
         }
 
-        public PointChartUser AddNewPointEarner(long oauthServiceId, IOAuthToken oauthToken, PointChartUser currentUser)
+        public PointChartUser AddNewPointEarner(string oauthServiceId, IOAuthToken oauthToken, PointChartUser currentUser)
         {
             PointChartUser retVal = currentUser;
 
             if(currentUser != null)
             {
-                PointChartUser pointEarner = new PointChartUser(this.OAuthRepository.GetById(oauthToken, oauthServiceId));
+                PointChartUser pointEarner = new PointChartUser();// this.OAuthRepository.GetById(oauthToken, oauthServiceId));
                 
                 if(pointEarner!=null)
                 {

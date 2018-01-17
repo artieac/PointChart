@@ -50,14 +50,14 @@ namespace AlwaysMoveForward.PointChart.DataLayer.Repositories
             return new DataMapper.PointChartUserDataMap();
         }
 
-        public DTO.User GetDTOByOAuthServiceUserId(long oauthServiceId)
+        public DTO.User GetDTOByOAuthServiceUserId(string oauthServiceId)
         {
             return this.UnitOfWork.CurrentSession.Query<DTO.User>()
                 .Where(r => r.OAuthServiceUserId == oauthServiceId)
                 .FirstOrDefault();
         }
 
-        public PointChartUser GetByOAuthServiceUserId(long oauthServiceId)
+        public PointChartUser GetByOAuthServiceUserId(string oauthServiceId)
         {
             return this.GetDataMapper().Map(this.GetDTOByOAuthServiceUserId(oauthServiceId));
         }

@@ -1,9 +1,10 @@
 ﻿'use strict'
 var React = require('react');
+var createReactClass = require('create-react-class');
 var TaskInputRow = require('./TaskInputRow');
 var TaskRow = require('./TaskRow');
 
-var TaskTableBody = React.createClass({
+var TaskTableBody = createReactClass({
     render: function () {
         return (
             <tbody>
@@ -16,17 +17,19 @@ var TaskTableBody = React.createClass({
     }
 });
 
-var TaskTable = React.createClass({
+var TaskTable = createReactClass({
     render: function() {
         return (
             <div>
                 <div>
                     <table className="table table-hover table-bordered">
-                        <thead> 
-                            <th width="20%">Name</th>
-                            <th width="20%">Points</th>
-                            <th width="20%">Max Per Day</th>
-                            <th>Action</th>
+						<thead> 
+							<tr>
+								<th width="20%">Name</th>
+								<th width="20%">Points</th>
+								<th width="20%">Max Per Day</th>
+								<th>Action</th>
+							</tr>
                         </thead>                    
                         <TaskTableBody tableBodyData={this.props.tableData}/>
                     </table>

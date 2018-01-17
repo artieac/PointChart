@@ -1,14 +1,15 @@
 ﻿'use strict'
-/** @jsx React.DOM */
 var React = require('react');
+var ReactDOM = require('react-dom');
 var Reflux = require('reflux');
 var Route = require('react-router');
+var createReactClass = require('create-react-class');
 var pointEarnerStore = require('../stores/pointEarnerStore');
 var pointEarnerActions = require('../actions/pointEarnerActions');
 var PointEarnerTable = require('../Components/PointEarnerComponents/PointEarnerTable.js');
 var PointEarnerSearch = require('../Components/PointEarnerComponents/PointEarnerSearch.js');
 
-var PointEarnerManagementApp = React.createClass({
+var PointEarnerManagementApp = createReactClass({
     selectedPointEarners: [],
 
     mixins: [
@@ -57,4 +58,4 @@ var PointEarnerManagementApp = React.createClass({
 });
 
 module.exports = PointEarnerManagementApp;
-React.render(<PointEarnerManagementApp />, document.getElementById("pointEarnerManagerReactContent"));
+ReactDOM.render(<PointEarnerManagementApp />, document.getElementById("pointEarnerManagerReactContent"));

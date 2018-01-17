@@ -2,10 +2,11 @@
 var jQuery = require('jquery');
 var React = require('react');
 var Reflux = require('reflux');
+var createReactClass = require('create-react-class');
 var GenericDropDown = require('../GenericDropDown');
 var chartActions = require('../../actions/chartActions');
 
-var TaskRow = React.createClass({    
+var TaskRow = createReactClass({    
     handleIsInChartChecked: function(event){  
         this.props.rowData.isInChart = event.target.checked;   
         this.forceUpdate();
@@ -25,7 +26,7 @@ var TaskRow = React.createClass({
     }    
 });
 
-var TaskSelectionTableBody = React.createClass({   
+var TaskSelectionTableBody = createReactClass({   
     isInChart: function(taskId){
         var retVal = false;
         
@@ -59,7 +60,7 @@ var TaskSelectionTableBody = React.createClass({
     }
 });
 
-var TaskSelectionTable = React.createClass({
+var TaskSelectionTable = createReactClass({
     getPointEarnerList: function() {
         var retVal = [];
 

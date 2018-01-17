@@ -26,7 +26,7 @@ body {
 }
 .header .siteTitle {
   font-size: x-large;
-  color: #5493e0;
+  color: #5493E0;
   font-style: oblique;
   text-decoration: none;
 }
@@ -39,7 +39,7 @@ body {
 .header .loginDiv .loginLabel {
   font-size: small;
   padding-right: 2px;
-  color: #5493e0;
+  color: #5493E0;
 }
 .mainContentPanel {
   text-align: left;
@@ -57,7 +57,7 @@ body {
 }
 .mainContentPanel .bodyContainer .bodyContent .contentPageTitle {
   font-size: larger;
-  color: #5493e0;
+  color: #5493E0;
   text-align: center;
 }
 .linkSectionTitle {

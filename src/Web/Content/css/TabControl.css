@@ -16,8 +16,8 @@ label {
 .tabControl {
   height: 50px;
   width: 100%;
-  background-color: #5493e0;
-  color: #ffffff;
+  background-color: #5493E0;
+  color: #FFFFFF;
 }
 .tabControl ul {
   padding-left: 0px;
@@ -33,50 +33,50 @@ label {
   height: 100%;
   padding: 0 1em 0 1em;
   display: table-cell;
-  color: #ffffff;
-  background-color: #5493e0;
+  color: #FFFFFF;
+  background-color: #5493E0;
   vertical-align: middle;
 }
 .tabControl ul .tabItem .unselectedLink {
   text-decoration: none;
-  color: #ffffff;
+  color: #FFFFFF;
 }
 .tabControl ul .tabItem a {
   text-decoration: none;
-  color: #ffffff;
+  color: #FFFFFF;
 }
 .tabControl ul .tabItem a:selected {
   text-decoration: none;
-  color: #ffffff;
+  color: #FFFFFF;
 }
 .tabControl ul .tabItem a:visited {
   text-decoration: none;
-  color: #ffffff;
+  color: #FFFFFF;
 }
 .tabControl ul .selectedTabItem {
   height: 100%;
   padding: 0 1em 0 1em;
   display: table-cell;
-  background-color: #ffffff;
-  color: #ffffff;
+  background-color: #FFFFFF;
+  color: #FFFFFF;
   vertical-align: middle;
   border-style: solid;
   border-width: thin;
-  border-color: #5493e0;
+  border-color: #5493E0;
 }
 .tabControl ul .selectedTabItem .selectedLink {
   text-decoration: none;
-  color: #5493e0;
+  color: #5493E0;
 }
 .tabControl ul .selectedTabItem a {
   text-decoration: none;
-  color: #5493e0;
+  color: #5493E0;
 }
 .tabControl ul .selectedTabItem a:selected {
   text-decoration: none;
-  color: #5493e0;
+  color: #5493E0;
 }
 .tabControl ul .selectedTabItem a:visited {
   text-decoration: none;
-  color: #5493e0;
+  color: #5493E0;
 }
