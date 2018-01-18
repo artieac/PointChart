@@ -27,6 +27,7 @@ using Auth0.AuthenticationApi;
 using AlwaysMoveForward.PointChart.Common;
 using Auth0.AuthenticationApi.Models;
 using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace AlwaysMoveForward.PointChart.Web.Controllers
 {
@@ -108,9 +109,9 @@ namespace AlwaysMoveForward.PointChart.Web.Controllers
                 .WithRedirectUrl(redirectUri.ToString())
                 .WithResponseType(AuthorizationResponseType.Code)
                 .WithScope("openid profile");
-                // adding this audience will cause Auth0 to use the OIDC-Conformant pipeline
-                // you don't need it if your client is flagged as OIDC-Conformant (Advance Settings | OAuth)
-//                .WithAudience("https://" + auth0Configuration.Domain + "/userinfo");
+            // adding this audience will cause Auth0 to use the OIDC-Conformant pipeline
+            // you don't need it if your client is flagged as OIDC-Conformant (Advance Settings | OAuth)
+            //                .WithAudience("https://" + auth0Configuration.Domain + "/userinfo");
 
             this.Response.Redirect(authorizeUrlBuilder.Build().ToString(), false);
         }
@@ -177,12 +178,11 @@ namespace AlwaysMoveForward.PointChart.Web.Controllers
             AccessToken token = await client.ExchangeCodeForAccessTokenAsync(exchangeCode);
             Auth0.Core.User profile = await client.GetUserInfoAsync(token.AccessToken);
 
-            //    try
-            //    {
-            //        accessToken = this.Services.OAuthClient.ExchangeRequestTokenForAccessToken(storedRequestToken, verifier);
+            var handler = new JwtSecurityTokenHandler();
+            JwtSecurityToken decodedToken = handler.ReadToken(token.IdToken) as JwtSecurityToken;
 
-            long length = token.IdToken.Length;
-            PointChartUser amfUser = this.Services.UserService.GetFromAMFUser(token.IdToken, profile.FirstName, profile.LastName, token.AccessToken);
+            String subjectId = decodedToken.Payload.Sub.Split('|')[1];
+            PointChartUser amfUser = this.Services.UserService.GetFromAMFUser(subjectId, profile.FirstName, profile.LastName, token.AccessToken);
 
             if (amfUser == null)
             {

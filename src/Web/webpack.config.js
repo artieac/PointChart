@@ -10,7 +10,7 @@ const extractLess = new ExtractTextPlugin({
 
 module.exports = {
 	entry: {
-		HomePageAPp: './code/reflux/apps/HomePageApp.js',
+		HomePageApp: './code/reflux/apps/HomePageApp.js',
 		CollectPointsApp: './code/reflux/apps/CollectPointsApp.js',
 		EditChartApp: './code/reflux/apps/EditChartApp.js',
 		PointEarnerManagementApp: './code/reflux/apps/PointEarnerManagementApp.js',
