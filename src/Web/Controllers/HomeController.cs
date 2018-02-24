@@ -12,10 +12,22 @@ namespace AlwaysMoveForward.PointChart.Web.Controllers
 {
     public class HomeController : BaseController
     {
+        public int foo(int a, int b)
+        {
+            while (a <= b)
+            {
+                a -= b;
+            }
+
+            return a;
+        }
+
         // GET: /Home/
         [CookieAuthenticationParser]
         public ActionResult Index()
         {
+            this.foo(5, 10);
+
             HomeModel model = new HomeModel();
             model.OwnedCharts = this.Services.Charts.GetByCreator(this.CurrentPrincipal.CurrentUser);
             model.AssignedCharts = this.Services.Charts.GetByPointEarner(this.CurrentPrincipal.CurrentUser);
